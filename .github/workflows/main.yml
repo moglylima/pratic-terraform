@@ -1,2 +1,38 @@
 name: "Pratica terraform"
 
+on:
+  push:
+    branbranches: ["main"]
+    paths: ["src/**]
+  workflow_dispatch:
+
+
+jobs:
+  terraform:
+    name: "Terraform Apply"
+    runs-on: "ubuntu-latest"
+   
+    steps:
+
+    # Aqui são as actions
+    # 1. Confg. AWS
+    # 2. Checkout
+    # 3. Inicialização do terraform identificando as credenciais do bucket
+    # 4. Terraform Apply
+      - name: "Configure AWS Credentials" 
+      uses: aws-actions/configure-aws-credentials@v4
+      with
+        aws-region: 
+        aws-access-key-id: ${{secret}}
+        ws-secret-access-key: ${{secret}}
+
+    - name: checkout
+    uses: actions/checkout@v4.1.7
+
+    - name: terraform init
+      working-directory: ./src
+      run:
+        
+      
+    
+ 
